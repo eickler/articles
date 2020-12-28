@@ -1,5 +1,4 @@
-use chrono::{DateTime, Local};
-use crate::schema::articles;
+use chrono::NaiveDateTime;
 
 #[derive(Queryable)]
 pub struct Article {
@@ -9,10 +8,10 @@ pub struct Article {
   pub title: String,
   pub tags: Vec<String>,
   pub abstract_: String,
-  pub teaser: String,
+  pub teaser: Option<String>,
   pub articles_content: String,
   pub draft: bool,
-  pub last_update: DateTime<Local>,
+  pub last_update: NaiveDateTime,
   pub position: i32,
-  pub video_file_name: String,
+  pub video_file_name: Option<String>,
 }

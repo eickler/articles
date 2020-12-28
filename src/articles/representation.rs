@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use chrono::{DateTime, Local};
+use chrono::NaiveDateTime;
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct Article {
@@ -10,10 +10,10 @@ pub struct Article {
   pub tags: Vec<String>,
   #[serde(rename = "abstract")]
   pub abstract_: String,
-  pub teaser: String,
+  pub teaser: Option<String>,
   pub content: String,
   pub draft: bool,
-  pub created: DateTime<Local>,
+  pub created: NaiveDateTime,
   #[serde(rename = "videoFileName")]
-  pub video_file_name: String,
+  pub video_file_name: Option<String>,
 }

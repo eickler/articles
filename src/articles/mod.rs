@@ -1,6 +1,7 @@
-pub mod representation;
 pub mod handler;
+pub mod representation;
 pub mod persistence;
+pub mod mapper;
 
 pub fn routes() -> Vec<rocket::Route> {
   rocket::routes![
