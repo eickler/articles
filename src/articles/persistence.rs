@@ -1,6 +1,7 @@
 use chrono::NaiveDateTime;
+use crate::schema::articles;
 
-#[derive(Queryable)]
+#[derive(Queryable,Insertable,Identifiable)]
 pub struct Article {
   pub id: i32,
   pub categories: Vec<i32>,
