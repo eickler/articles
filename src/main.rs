@@ -5,9 +5,10 @@
 
 use dotenv::{dotenv,var};
 use std::collections::HashMap;
-use rocket::config::{Config, Environment, Value};
+use rocket::config::{Config, Environment, Value, LoggingLevel};
 use rocket_contrib::databases;
 
+pub mod auth;
 pub mod articles;
 pub mod schema;
 
@@ -26,7 +27,8 @@ fn main() {
     dotenv().ok();
 
     let db_url = var("DATABASE_URL").unwrap();
-    let config = Config::build(Environment::Production)
+    let config = Config::build(Environment::Development)
+        .log_level(LoggingLevel::Debug)
         .extra("databases", db_config(db_url))
         .finalize()
         .unwrap();
